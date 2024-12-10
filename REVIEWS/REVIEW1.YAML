@@ -1,0 +1,61 @@
+1) TWO TYPES:
+    - A) DATA WAREHOUSE:  A data warehouse is a large store of data accumulated from a wide range of sources within a company and used to guide management decisions.
+    - B) DATA LAKES: A data lake is a storage repository that holds a vast amount of raw data in its native format until it is needed.
+    - C) DATA LAKEHOUSE: A data lakehouse is a new data management paradigm that combines the best of data lakes and data warehouses.
+
+2) DATA WAREHOUSE:
+    - A) Data warehouses are used to store and analyze data from a wide range of sources.
+    - B) Data warehouses are typically used to store structured data.
+    - C) Data warehouses are optimized for read-heavy workloads.
+    - D) Data warehouses are typically used for business intelligence and reporting.
+    - E) Data warehouses are typically used to store historical data.
+    - F) ETLS are used to load data into data warehouses:
+        - 1) Extract: Data is extracted from source systems.
+        - 2) Transform: Data is transformed into a format suitable for being stored.
+        - 3) Load: Data is loaded into the data warehouse.
+          
+        - step by step:
+          - estraction:
+              data cleanning, enrichment, fomatting, agregation, enconding, handling missing values, etc.
+          - transformation:
+             
+          - loading:
+               can be: 
+                - batches: all data is loaded at once
+                - streaming: data is loaded in real time
+
+        - automated in aws: 
+          - AWS Glue: ETL service that makes it easy to prepare and load data for analytics.
+          - AWS Data Pipeline: web service for processing and moving data between different AWS services.
+          - AWS DMS: service that helps you migrate databases to AWS quickly and securely.
+        - orquestrated in aws:
+          - AWS Step Functions: service that lets you coordinate multiple AWS services into serverless workflows.
+          - AWS Lambda: service that lets you run code without provisioning or managing servers.
+          - AWS Batch: service that lets you run batch computing workloads on the AWS Cloud.
+3) DATA SOURCES AND ITS DESCRIPTION:
+    3.1 - JDBC: Java Database Connectivity (JDBC) is an application programming interface (API) for the programming language Java, which defines how a client may access a database.
+    3.2 - ODBC: Open Database Connectivity (ODBC) is a standard application programming interface (API) for accessing database management systems (DBMS).
+
+4) AMAZON S3:
+     - BUCKETS: DIRECTORIES WHERE DATA(FILES) IS STORED. must have a globally unique name.
+     - OBJECTS: FILES STORED IN BUCKETS. consist of data and metadata. full path is like s3://bucket-name/file-name or s3://bucket-name/folder-name/file-name.
+     - security:
+        - User-based: IAM policies: control who can access your AWS resources (EC2, S3, etc.)
+        - Resource-based: Bucket policies and ACLs: control who can access your bucket and the objects in it. allows cross-account access.
+        - Encryption: encrypt data at rest and in transit.
+        - json based policies example with description:
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"
+              }
+            ]
+          }
+        - user in internet can access s3 bucket with a url like: 
+          https://DOC-EXAMPLE-BUCKET.s3.amazonaws.com/DOC-EXAMPLE-BUCKET/DOC-EXAMPLE-FILE.txt 
+          by policy above or iam user with permissions or iam role with permissions.
+  
